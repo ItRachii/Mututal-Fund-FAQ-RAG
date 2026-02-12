@@ -96,6 +96,34 @@ st.markdown("""
         text-decoration: underline !important;
     }
 
+    /* Bouncing Dots Animation */
+    .typing-dots {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        padding: 10px 0;
+    }
+    .dot {
+        width: 8px;
+        height: 8px;
+        background-color: #8B949E;
+        border-radius: 50%;
+        animation: bounce 1.4s infinite ease-in-out both;
+    }
+    .dot:nth-child(1) { animation-delay: -0.32s; }
+    .dot:nth-child(2) { animation-delay: -0.16s; }
+    
+    @keyframes bounce {
+        0%, 80%, 100% { transform: scale(0); }
+        40% { transform: scale(1.0); }
+    }
+
+    /* Input placeholder styling - Make it look like active text during processing */
+    input::placeholder {
+        color: #ececec !important; /* Brighter during processing */
+        opacity: 0.8 !important;
+    }
+
     /* Subtle Footer Disclaimer */
     .fixed-footer {
         position: fixed;
@@ -156,13 +184,14 @@ if not st.session_state.messages and not current_q:
 
 # Chat Layout (Active Conversation)
 else:
-    # Floating Back Button
+    # Navigation and History
+    # Floating Back Button - Always show in chat layout
     if st.button("← Back to Home", key="back_btn"):
         st.session_state.messages = []
         st.session_state.user_query = ""
         st.rerun()
 
-    # Display chat messages from history
+    # Display chat messages from history (Always show, including the query just sent)
     chat_container = st.container()
     with chat_container:
         for message in st.session_state.messages:
@@ -173,20 +202,32 @@ else:
     if current_q:
         with st.chat_message("assistant"):
             message_placeholder = st.empty()
+            # Thinking animation: Bouncing dots
+            message_placeholder.markdown("""
+                <div class="typing-dots">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+            """, unsafe_allow_html=True)
+            
             try:
-                with st.spinner("Retrieving facts..."):
-                    response = httpx.post(API_URL, json={"query": current_q}, timeout=60.0)
-                    if response.status_code == 200:
-                        answer = response.json().get("answer", "No response.")
-                        message_placeholder.markdown(answer)
-                        st.session_state.messages.append({"role": "assistant", "content": answer})
-                    else:
-                        message_placeholder.error(f"Error: Backend returned {response.status_code}")
+                # Backend call
+                response = httpx.post(API_URL, json={"query": current_q}, timeout=60.0)
+                if response.status_code == 200:
+                    answer = response.json().get("answer", "No response.")
+                    message_placeholder.markdown(answer)
+                    st.session_state.messages.append({"role": "assistant", "content": answer})
+                    # Rerun once to stabilize state after answer
+                    st.rerun()
+                else:
+                    message_placeholder.error(f"Error: Backend returned {response.status_code}")
             except Exception as e:
                 message_placeholder.error(f"Connection Error: {e}")
 
     # Bottom Fixed Input for active chat
-    user_input = st.chat_input("Ask anything", key="chat_bar")
+    input_placeholder = current_q if current_q else "Ask anything"
+    user_input = st.chat_input(input_placeholder, key="chat_bar")
     if user_input:
         st.session_state.user_query = user_input
         st.rerun()
