@@ -1,6 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from rag_engine import RAGService
+from .rag_engine import RAGService
 import uvicorn
 
 app = FastAPI(title="HDFC Mutual Fund RAG API")

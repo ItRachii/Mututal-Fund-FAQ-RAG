@@ -30,57 +30,53 @@
 
 ---
 
-## 3. Complete Corpus (25 URLs)
-
-### 3.1 Scheme Product Pages (SID/KIM/Factsheet available via Downloads tab)
+### 3.1 Scheme Information Documents (SID) — Fund Objectives, Risk Factors
 
 | # | AMC | Scheme | URL | Document Type | Expected Facts |
 | --- | ----- | -------- | ----- | --------------- | ---------------- |
-| 1 | HDFC AMC | HDFC Large Cap Fund | `https://www.hdfcfund.com/explore/mutual-funds/hdfc-large-cap-fund/direct` | Product Page | Investment objective, TER, exit load, SIP min, fund manager |
-| 2 | HDFC AMC | HDFC Flexi Cap Fund | `https://www.hdfcfund.com/explore/mutual-funds/hdfc-flexi-cap-fund/direct` | Product Page | Investment objective, multi-cap strategy, TER |
-| 3 | HDFC AMC | HDFC Tax Saver (ELSS) | `https://www.hdfcfund.com/explore/mutual-funds/hdfc-elss-tax-saver/direct` | Product Page | 3-year lock-in, Section 80C, TER |
-| 4 | HDFC AMC | HDFC Balanced Advantage Fund | `https://www.hdfcfund.com/explore/mutual-funds/hdfc-balanced-advantage-fund/direct` | Product Page | Dynamic equity-debt allocation, TER |
-| 5 | HDFC AMC | HDFC Liquid Fund | `https://www.hdfcfund.com/explore/mutual-funds/hdfc-liquid-fund/direct` | Product Page | Money market instruments, exit load, YTM |
+| 1 | HDFC AMC | HDFC Large Cap Fund | `https://files.hdfcfund.com/s3fs-public/SID/2025-11/SID%20-%20HDFC%20Large%20Cap%20Fund%20dated%20November%2021%2C%202025_0.pdf` | SID | Investment objective, asset allocation, risk factors |
+| 2 | HDFC AMC | HDFC Flexi Cap Fund | `https://files.hdfcfund.com/s3fs-public/SID/2025-11/SID%20-%20HDFC%20Flexi%20Cap%20Fund%20dated%20November%2021%2C%202025_0.pdf` | SID | Multi-cap strategy, risk factors |
+| 3 | HDFC AMC | HDFC Tax Saver (ELSS) | `https://files.hdfcfund.com/s3fs-public/SID/2025-11/SID%20-%20HDFC%20ELSS%20Tax%20Saver%20dated%20November%2021%2C%202025.pdf` | SID | Lock-in period, Section 80C eligibility |
+| 4 | HDFC AMC | HDFC Balanced Advantage Fund | `https://files.hdfcfund.com/s3fs-public/SID/2025-11/SID%20-%20HDFC%20Balanced%20Advantage%20Fund%20dated%20November%2021%2C%202025_0.pdf` | SID | Dynamic allocation model |
+| 5 | HDFC AMC | HDFC Liquid Fund | `https://files.hdfcfund.com/s3fs-public/SID/2025-11/SID%20-%20HDFC%20Liquid%20Fund%20dated%20November%2021%2C%202025.pdf` | SID | Money market instruments |
 
-### 3.2 Scheme Information Documents (SID) — Fund Objectives, Risk Factors
-
-| # | AMC | Scheme | URL | Document Type | Expected Facts |
-| --- | ----- | -------- | ----- | --------------- | ---------------- |
-| 6 | HDFC AMC | HDFC Large Cap Fund | `https://www.hdfcfund.com/investor-services/fund-documents/sid` | SID | Investment objective, asset allocation, risk factors |
-| 7 | HDFC AMC | HDFC Flexi Cap Fund | `https://www.hdfcfund.com/investor-services/fund-documents/sid` | SID | Multi-cap strategy, risk factors |
-| 8 | HDFC AMC | HDFC Tax Saver (ELSS) | `https://www.hdfcfund.com/investor-services/fund-documents/sid` | SID | Lock-in period, Section 80C eligibility |
-| 9 | HDFC AMC | HDFC Balanced Advantage Fund | `https://www.hdfcfund.com/investor-services/fund-documents/sid` | SID | Dynamic allocation model |
-| 10 | HDFC AMC | HDFC Liquid Fund | `https://www.hdfcfund.com/investor-services/fund-documents/sid` | SID | Money market instruments |
-
-### 3.3 Key Information Memorandum (KIM) — Expense Ratio, Exit Load, SIP Minimums
+### 3.2 Key Information Memorandum (KIM) — Expense Ratio, Exit Load, SIP Minimums
 
 | # | AMC | Scheme | URL | Document Type | Expected Facts |
 | --- | ----- | -------- | ----- | --------------- | ---------------- |
-| 11 | HDFC AMC | All Schemes | `https://www.hdfcfund.com/investor-services/fund-documents/kim` | KIM | TER, exit load, min SIP/lumpsum |
+| 6 | HDFC AMC | HDFC Large Cap Fund | `https://files.hdfcfund.com/s3fs-public/KIM/2025-11/KIM%20-%20HDFC%20Large%20Cap%20Fund%20dated%20November%2021%2C%202025_0.pdf` | KIM | TER, exit load, SIP |
+| 7 | HDFC AMC | HDFC Flexi Cap Fund | `https://files.hdfcfund.com/s3fs-public/KIM/2025-11/KIM%20-%20HDFC%20Flexi%20Cap%20Fund%20dated%20November%2021%2C%202025_1.pdf` | KIM | TER, exit load, SIP |
+| 8 | HDFC AMC | HDFC Tax Saver (ELSS) | `https://files.hdfcfund.com/s3fs-public/KIM/2025-11/KIM%20-%20HDFC%20ELSS%20Tax%20Saver%20dated%20November%2021%2C%202025_0.pdf` | KIM | TER, exit load, SIP |
+| 9 | HDFC AMC | HDFC Balanced Advantage Fund | `https://files.hdfcfund.com/s3fs-public/KIM/2025-11/KIM%20-%20HDFC%20Balanced%20Advantage%20Fund%20dated%20November%2021%2C%202025_0.pdf` | KIM | TER, exit load, SIP |
+| 10 | HDFC AMC | HDFC Liquid Fund | `https://files.hdfcfund.com/s3fs-public/KIM/2025-11/KIM%20-%20HDFC%20Liquid%20Fund%20dated%20November%2021%2C%202025.pdf` | KIM | TER, exit load, SIP |
 
-### 3.4 Scheme Summary — Quick Reference
-
-| # | AMC | Scheme | URL | Document Type | Expected Facts |
-| --- | ----- | -------- | ----- | --------------- | ---------------- |
-| 12 | HDFC AMC | All Schemes | `https://www.hdfcfund.com/investor-services/fund-documents/scheme-summary` | Scheme Summary | Key facts, investment objective, risk level, NAV |
-
-### 3.4 Monthly Factsheets — Benchmark, Returns, Portfolio Holdings, Riskometer
+### 3.3 Monthly Fund Facts / Factsheets — Holdings, Performance, AUM
 
 | # | AMC | Scheme | URL | Document Type | Expected Facts |
 | --- | ----- | -------- | ----- | --------------- | ---------------- |
-| 13 | HDFC AMC | All Schemes | `https://www.hdfcfund.com/investor-services/factsheets` | Factsheet | Scheme objective, inception date, fund manager, portfolio holdings, risk ratios, historical performance, AUM |
+| 11 | HDFC AMC | HDFC Large Cap Fund | `https://files.hdfcfund.com/s3fs-public/Others/2026-02/Fund%20Facts%20-%20HDFC%20Large%20Cap%20Fund_January%2026.pdf` | Fund Facts | Key facts, holdings, AUM |
+| 12 | HDFC AMC | HDFC Flexi Cap Fund | `https://files.hdfcfund.com/s3fs-public/Others/2026-02/Fund%20Facts%20-%20HDFC%20Flexi%20Cap%20Fund_January%2026.pdf` | Fund Facts | Key facts, holdings, AUM |
+| 13 | HDFC AMC | HDFC Tax Saver (ELSS) | `https://files.hdfcfund.com/s3fs-public/Others/2026-02/Fund%20Facts%20-%20HDFC%20TaxSaver%20Fund_January%2026.pdf` | Fund Facts | Key facts, holdings, AUM |
+| 14 | HDFC AMC | HDFC Balanced Advantage Fund | `https://files.hdfcfund.com/s3fs-public/Others/2026-02/Fund%20Facts%20-%20HDFC%20Balanced%20Advantage%20Fund_January%2026.pdf` | Fund Facts | Key facts, holdings, AUM |
+| 15 | HDFC AMC | HDFC Liquid Fund | `https://files.hdfcfund.com/s3fs-public/Others/2025-12/Fund%20Facts%20-%20HDFC%20Liquid%20Fund%20-%20December%202025%20%5Ba%5D.pdf` | Fund Facts | Key facts, holdings, AUM |
 
-### 3.5 Leaflets — Scheme Highlights
-
-| # | AMC | Scheme | URL | Document Type | Expected Facts |
-| --- | ----- | -------- | ----- | --------------- | ---------------- |
-| 14 | HDFC AMC | All Schemes | `https://www.hdfcfund.com/investor-services/fund-literature/leaflets` | Leaflet | Scheme highlights, key features, investment options |
-
-### 3.6 Presentations — Detailed Scheme Information
+### 3.4 Scheme Presentations — Detailed Analysis
 
 | # | AMC | Scheme | URL | Document Type | Expected Facts |
 | --- | ----- | -------- | ----- | --------------- | ---------------- |
-| 15 | HDFC AMC | All Schemes | `https://www.hdfcfund.com/investor-services/fund-literature/presentation` | Presentation | Detailed scheme analysis, market outlook, investment strategy |
+| 16 | HDFC AMC | HDFC Large Cap Fund | `https://files.hdfcfund.com/s3fs-public/Others/2025-10/HDFC%20Large%20Cap%20Fund%20Presentation%20%28September%202025%29.pdf` | Presentation | Strategy, holdings |
+| 17 | HDFC AMC | HDFC Flexi Cap Fund | `https://files.hdfcfund.com/s3fs-public/Others/2025-12/HDFC%20Flexi%20Cap%20Fund%20Presentation%20%28November%202025%29.pdf` | Presentation | Strategy, holdings |
+| 18 | HDFC AMC | HDFC Tax Saver (ELSS) | `https://files.hdfcfund.com/s3fs-public/Others/2025-10/HDFC%20ELSS%20Tax%20saver%20Presentation%20%28October%202025%29.pdf` | Presentation | Strategy, holdings |
+| 19 | HDFC AMC | HDFC Balanced Advantage Fund | `https://files.hdfcfund.com/s3fs-public/Others/2026-02/Presentation%20-%20HDFC%20Balanced%20Advantage%20Fund%20%28Jan%202026%29.pdf` | Presentation | Strategy, holdings |
+
+### 3.5 Scheme Leaflets — Highlights
+
+| # | AMC | Scheme | URL | Document Type | Expected Facts |
+| --- | ----- | -------- | ----- | --------------- | ---------------- |
+| 20 | HDFC AMC | HDFC Large Cap Fund | `https://files.hdfcfund.com/s3fs-public/Others/2026-02/HDFC%20Large%20Cap%20Fund%20Leaflet%20%28Jan%202026%29.pdf` | Leaflet | Highlights |
+| 21 | HDFC AMC | HDFC Flexi Cap Fund | `https://files.hdfcfund.com/s3fs-public/Others/2025-12/HDFC%20Flexi%20Cap%20Fund%20Leaflet%20%28December%202025%29.pdf` | Leaflet | Highlights |
+| 22 | HDFC AMC | HDFC Tax Saver (ELSS) | `https://files.hdfcfund.com/s3fs-public/Others/2025-01/HDFC%20ELSS%20%20Tax%20saver%20Leaflet%20-%20January%202024%20%281%29.pdf` | Leaflet | Highlights |
+| 23 | HDFC AMC | HDFC Balanced Advantage Fund | `https://files.hdfcfund.com/s3fs-public/Others/2025-11/Leaflet%20-%20HDFC%20Balanced%20Advantage%20Fund%20%28November%202025%29.pdf` | Leaflet | Highlights |
 
 ### 3.4 Statement of Additional Information (SAI) — AMC Details, Legal Structure
 

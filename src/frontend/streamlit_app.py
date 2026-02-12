@@ -280,9 +280,9 @@ else:
         for message in st.session_state.messages:
             # Use custom icons for both
             if message["role"] == "user":
-                avatar = "assets/user_icon.svg"
+                avatar = "src/frontend/assets/user_icon.svg"
             else:
-                avatar = "assets/bot_icon.svg"
+                avatar = "src/frontend/assets/bot_icon.svg"
             
             with st.chat_message(message["role"], avatar=avatar):
                 st.markdown(message["content"])
@@ -290,7 +290,7 @@ else:
     # If we are currently processing a brand new query (current_q), show assistant response
     if current_q:
         # The user query is already in messages, so it's shown above in the loop
-        with st.chat_message("assistant", avatar="assets/bot_icon.svg"):
+        with st.chat_message("assistant", avatar="src/frontend/assets/bot_icon.svg"):
             message_placeholder = st.empty()
             # Thinking animation: Bouncing dots
             message_placeholder.markdown("""

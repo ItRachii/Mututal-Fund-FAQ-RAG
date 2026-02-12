@@ -1,4 +1,4 @@
-from rag_engine import RAGService
+from src.backend.rag_engine import RAGService
 import json
 
 def test_query():
