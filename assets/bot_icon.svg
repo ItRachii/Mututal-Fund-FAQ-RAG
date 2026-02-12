@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Bot Head Base -->
+  <path d="M15 40 Q 15 20, 35 20 L 65 20 Q 85 20, 85 40 L 85 50 Q 85 75, 50 75 Q 15 75, 15 50 Z" fill="none" stroke="white" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Antenna -->
+  <line x1="50" y1="20" x2="50" y2="10" stroke="white" stroke-width="7" stroke-linecap="round"/>
+  <!-- Eyes -->
+  <circle cx="38" cy="42" r="6" fill="white"/>
+  <circle cx="62" cy="42" r="6" fill="white"/>
+  <!-- 4-pointed Sparkle at bottom right -->
+  <path d="M72 68 Q 78 78, 88 82 Q 78 86, 72 96 Q 66 86, 56 82 Q 66 78, 72 68 Z" fill="white"/>
+</svg>

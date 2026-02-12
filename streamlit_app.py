@@ -73,19 +73,25 @@ st.markdown("""
         color: #8E8E8E !important;
     }
 
-    /* Back Button Styling (Subtle Link) */
-    div[data-testid="stButton"] button:has(div:contains("Back to Home")) {
-        border: none !important;
-        background-color: transparent !important;
-        color: #8B949E !important;
-        padding: 0 !important;
-        font-size: 0.9rem !important;
-        margin-top: -40px !important;
-        margin-bottom: 20px !important;
+    /* Fixed Back Button Styling */
+    .fixed-back-btn {
+        position: fixed;
+        top: 24px;
+        left: 24px;
+        z-index: 999999;
     }
-    div[data-testid="stButton"] button:has(div:contains("Back to Home")):hover {
-        color: #ffffff !important;
-        text-decoration: underline !important;
+
+    .fixed-back-btn button {
+        background: transparent;
+        color: #8B949E;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+        padding: 6px 10px;
+    }
+
+    .fixed-back-btn button:hover {
+        color: white;
     }
     
     /* Suggestion Links (Simple Text) */
@@ -141,6 +147,47 @@ st.markdown("""
         opacity: 0.8 !important;
     }
 
+    /* Chat Message Alignment */
+    /* Shared styles for both */
+    div[data-testid="stChatMessage"] {
+        background-color: transparent !important;
+        width: fit-content !important;
+        max-width: 85% !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    div[data-testid="stChatMessage"] .stMarkdown {
+        background-color: #2F2F2F !important;
+        padding: 10px 20px !important;
+        border-radius: 20px !important;
+        display: inline-block !important;
+    }
+
+    /* User Message - Right Aligned */
+    div[data-testid="stChatMessage"]:has(div[aria-label="Chat message from user"]) {
+        flex-direction: row-reverse !important;
+        margin-left: auto !important;
+        text-align: right !important;
+    }
+    
+    div[data-testid="stChatMessage"]:has(div[aria-label="Chat message from user"]) section[data-testid="stChatMessageContent"] {
+        margin-right: 12px !important;
+        margin-left: 0 !important;
+    }
+
+    /* Assistant Message - Left Aligned */
+    div[data-testid="stChatMessage"]:has(div[aria-label="Chat message from assistant"]) {
+        flex-direction: row !important;
+        margin-right: auto !important;
+        text-align: left !important;
+    }
+
+    /* Typing Dots Alignment - Left Aligned */
+    .typing-dots {
+        justify-content: flex-start !important;
+        width: 100% !important;
+    }
+
     /* Subtle Footer Disclaimer */
     .fixed-footer {
         position: fixed;
@@ -148,7 +195,7 @@ st.markdown("""
         bottom: 0;
         width: 100%;
         background-color: #0F1116;
-        color: #8B949E;
+        color: #676767;
         text-align: center;
         padding: 20px;
         font-size: 13px;
@@ -164,6 +211,18 @@ if "messages" not in st.session_state:
 
 if "user_query" not in st.session_state:
     st.session_state.user_query = ""
+
+if "back_home" not in st.session_state:
+    st.session_state.back_home = False
+
+# Handle Streamlit-safe Back to Home (Python Handler)
+if st.session_state.get("back_home") or st.query_params.get("back_home"):
+    st.session_state.messages = []
+    st.session_state.user_query = ""
+    st.session_state.back_home = False
+    # Clear query params if present
+    st.query_params.clear()
+    st.rerun()
 
 # Interaction logic processing (Move to Top for Instant Response)
 current_q = None
@@ -200,23 +259,38 @@ if not st.session_state.messages and not current_q:
 
 # Chat Layout (Active Conversation)
 else:
-    # Navigation and History
-    # Floating Back Button - Always show in chat layout
-    if st.button("← Back to Home", key="back_btn"):
-        st.session_state.messages = []
-        st.session_state.user_query = ""
-        st.rerun()
+    # Inject True Fixed HTML Button (Bypasses Streamlit's internal scroller)
+    st.markdown("""
+    <div class="fixed-back-btn">
+        <form action="/" method="get">
+            <input type="hidden" name="back_home" value="true">
+            <button type="submit">← Back to Home</button>
+        </form>
+    </div>
+    """, unsafe_allow_html=True)
 
-    # Display chat messages from history (Always show, including the query just sent)
+    # Display chat messages from history
     chat_container = st.container()
     with chat_container:
+        # Dynamic Spacer to start chat from bottom
+        msg_count = len(st.session_state.messages)
+        spacer_height = max(10, 60 - (msg_count * 10))
+        st.markdown(f'<div style="height: {spacer_height}vh;"></div>', unsafe_allow_html=True)
+
         for message in st.session_state.messages:
-            with st.chat_message(message["role"]):
+            # Use custom icons for both
+            if message["role"] == "user":
+                avatar = "assets/user_icon.svg"
+            else:
+                avatar = "assets/bot_icon.svg"
+            
+            with st.chat_message(message["role"], avatar=avatar):
                 st.markdown(message["content"])
 
     # If we are currently processing a brand new query (current_q), show assistant response
     if current_q:
-        with st.chat_message("assistant"):
+        # The user query is already in messages, so it's shown above in the loop
+        with st.chat_message("assistant", avatar="assets/bot_icon.svg"):
             message_placeholder = st.empty()
             # Thinking animation: Bouncing dots
             message_placeholder.markdown("""
