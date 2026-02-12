@@ -1,0 +1,12 @@
+langchain
+langchain-community
+langchain-google-genai
+pymupdf
+python-dotenv
+chromadb
+langchain-chroma
+langchain-openai
+fastapi
+uvicorn
+streamlit
+httpx
