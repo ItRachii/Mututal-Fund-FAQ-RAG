@@ -37,13 +37,40 @@ st.markdown("""
         color: #ffffff;
     }
 
-    /* Input Bar Container styling (Both Home Search and Chat Bar) */
-    .stChatInputContainer, .stTextInput > div > div > input {
-        border-radius: 12px !important;
-        background-color: #1A1D23 !important;
-        border: 1px solid #30363D !important;
+    /* Pill-Shaped Input Bar Container styling (Both Home Search and Chat Bar) */
+    .stChatInputContainer {
+        padding: 0 !important;
+        background-color: #0F1116 !important; /* Match app background */
+        border: none !important;
+    }
+
+    .stChatInputContainer > div, .stTextInput > div > div {
+        border-radius: 50px !important;
+        background-color: #2F2F2F !important; /* Lighter gray like the image */
+        border: none !important;
+        overflow: hidden !important;
+        padding: 0 20px !important;
+    }
+    
+    /* Make the inner input transparent and borderless */
+    .stChatInputContainer textarea, .stTextInput input {
+        background-color: transparent !important;
+        border: none !important;
+        outline: none !important;
+        box-shadow: none !important;
         color: #ececec !important;
-        padding: 5px 15px !important;
+        padding: 12px 15px !important;
+        font-size: 1.1rem !important;
+    }
+    
+    /* Remove padding/margins from text input wrapper */
+    .stTextInput {
+        padding: 0 !important;
+    }
+    
+    /* Input placeholder styling */
+    input::placeholder, textarea::placeholder {
+        color: #8E8E8E !important;
     }
 
     /* Back Button Styling (Subtle Link) */
@@ -61,22 +88,12 @@ st.markdown("""
         text-decoration: underline !important;
     }
     
-    /* Remove padding/margins from text input wrapper */
-    .stTextInput {
-        padding: 0 !important;
-    }
-    
-    /* Input placeholder styling */
-    input::placeholder {
-        color: #8B949E !important;
-    }
-
     /* Suggestion Links (Simple Text) */
     .suggestion-container {
         max-width: 720px;
         margin: 0 auto;
         text-align: left;
-        padding-left: 10px;
+        padding: 10px 0 0 25px; /* Indent to match input text start */
     }
     
     .stButton>button {
@@ -84,7 +101,7 @@ st.markdown("""
         background-color: transparent !important;
         color: #ececec !important;
         text-align: left !important;
-        padding: 2px 0 !important;
+        padding: 4px 0 !important;
         font-size: 1rem !important;
         font-weight: 400 !important;
         display: block !important;
@@ -166,7 +183,6 @@ if not st.session_state.messages and not current_q:
             h_input = st.text_input("Home Search", label_visibility="collapsed", placeholder="Ask anything", key="home_input")
             
             st.markdown('<div class="suggestion-container">', unsafe_allow_html=True)
-            st.markdown('<div style="color: #8B949E; font-size: 0.9rem; padding-left: 2px;">you may ask</div>', unsafe_allow_html=True)
             examples = [
                 "What is the riskometer level for large cap?",
                 "What are the top 5 holdings of HDFC Flexi Cap Fund?",
