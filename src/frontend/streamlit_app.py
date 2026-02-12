@@ -1,9 +1,30 @@
 import streamlit as st
 import httpx
 import time
+import os
+import sys
+
+# Ensure root directory is in sys.path for direct module access on Streamlit Cloud
+root_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
+if root_path not in sys.path:
+    sys.path.append(root_path)
+
+# Potential Direct Import for Cloud Deployment
+try:
+    from src.backend.rag_engine import RAGService
+except ImportError:
+    RAGService = None
 
 # Configuration
 API_URL = "http://localhost:8000/chat"
+
+# Initialize local RAG instance if possible (Standard for Streamlit Cloud)
+if "rag_instance" not in st.session_state and RAGService:
+    try:
+        st.session_state.rag_instance = RAGService()
+    except Exception as e:
+        st.warning(f"Could not initialize local RAG: {e}")
+        st.session_state.rag_instance = None
 
 # --- UI CONFIGURATION ---
 st.set_page_config(
@@ -302,18 +323,25 @@ else:
             """, unsafe_allow_html=True)
             
             try:
-                # Backend call
-                response = httpx.post(API_URL, json={"query": current_q}, timeout=60.0)
-                if response.status_code == 200:
-                    answer = response.json().get("answer", "No response.")
+                # 1. Try Direct RAG Instance (Preferred for Cloud)
+                if st.session_state.get("rag_instance"):
+                    answer = st.session_state.rag_instance.query(current_q)
                     message_placeholder.markdown(answer)
                     st.session_state.messages.append({"role": "assistant", "content": answer})
-                    # Rerun once to stabilize state after answer
                     st.rerun()
+                
+                # 2. Fallback to Local API
                 else:
-                    message_placeholder.error(f"Error: Backend returned {response.status_code}")
+                    response = httpx.post(API_URL, json={"query": current_q}, timeout=60.0)
+                    if response.status_code == 200:
+                        answer = response.json().get("answer", "No response.")
+                        message_placeholder.markdown(answer)
+                        st.session_state.messages.append({"role": "assistant", "content": answer})
+                        st.rerun()
+                    else:
+                        message_placeholder.error(f"Error: Backend returned {response.status_code}. Make sure API server is running locally.")
             except Exception as e:
-                message_placeholder.error(f"Connection Error: {e}")
+                message_placeholder.error(f"Deployment Connection Error: {e}")
 
     # Bottom Fixed Input for active chat
     input_placeholder = current_q if current_q else "Ask anything"

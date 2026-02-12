@@ -18,9 +18,17 @@ LLM_MODEL = "gpt-4o-mini"
 
 class RAGService:
     def __init__(self):
+        # 1. Try environment variables, then falls back to Streamlit secrets for cloud deployment
         self.api_key = os.getenv("OPENAI_API_KEY")
         if not self.api_key:
-            raise ValueError("OPENAI_API_KEY not found in environment variables.")
+            try:
+                import streamlit as st
+                self.api_key = st.secrets.get("OPENAI_API_KEY")
+            except:
+                pass
+        
+        if not self.api_key:
+            raise ValueError("OPENAI_API_KEY not found. Please set it in .env or Streamlit Secrets.")
 
         # Load Manifest for URL mapping
         self.url_map = {}
