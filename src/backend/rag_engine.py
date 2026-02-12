@@ -11,7 +11,8 @@ from langchain_core.output_parsers import StrOutputParser
 load_dotenv()
 
 # Configuration
-CHROMA_DB_DIR = "./chroma_db"
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
+CHROMA_DB_DIR = os.path.join(BASE_DIR, "chroma_db")
 EMBEDDING_MODEL = "text-embedding-3-small"
 LLM_MODEL = "gpt-4o-mini"
 
@@ -149,7 +150,7 @@ Assistant:"""
         }
         
         # Fallback to manifest for any missing entries
-        manifest_path = "raw/corpus_manifest.json"
+        manifest_path = os.path.join(BASE_DIR, "raw/corpus_manifest.json")
         if os.path.exists(manifest_path):
             try:
                 with open(manifest_path, "r", encoding="utf-8") as f:
@@ -165,7 +166,8 @@ Assistant:"""
 
     def _load_system_prompt(self):
         try:
-            with open("system_prompt.md", "r", encoding="utf-8") as f:
+            prompt_path = os.path.join(BASE_DIR, "system_prompt.md")
+            with open(prompt_path, "r", encoding="utf-8") as f:
                 return f.read()
         except FileNotFoundError:
             return "You are a helpful assistant. Answer the user's question based on the context."
