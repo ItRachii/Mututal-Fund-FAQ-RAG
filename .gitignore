@@ -143,7 +143,7 @@ dmypy.json
 cython_debug/
 
 # Project Specific
-chroma_db/
+# chroma_db/ (Commented out to allow deployment on Streamlit Cloud)
 raw/*
 !raw/.gitkeep
 *.log
